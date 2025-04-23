@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<div class="header">
+  <h1>Computer Architecture</h1>
+  <p>Take the quiz to improve your Computer Architecture knowledge.</p>
+</div>
+
+<div class="container">
+  <br><button onclick="document.location='quiz.html'">Quiz</button></div></br>
+  <br><button onclick="document.location='notes.html'">Notes</button></br>
+  <br><button onclick="document.location='login.html'">Log In</button></br>
+  <br><button onclick="document.location='signup.html'">Sign Up</button></br>
+</div>
+
+</body>
+</html>
