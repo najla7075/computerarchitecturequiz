@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najla's Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #4e54c8;
+            --secondary-color: #8f94fb;
+            --accent-color: #6c63ff;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5a52d5;
+            border-color: #5a52d5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            padding-left: 30px;
+        }
+        
+        .portfolio-section {
+            padding: 80px 0;
+        }
+        
+        .portfolio-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .contact-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+        }
+        
+        .contact-info .btn {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 8px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .video-container {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: auto;
+        }
+        
+        .invalid-tooltip {
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                padding-left: 0;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Najla's Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to My Portfolio</h1>
+            <p>My name is Najla binti Mohd Najib. My matric number is 32DIT24F1033 and this is my Practical Work.</p>
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="about-image">
+                        <img src="https://placehold.co/600x400/4e54c8/FFFFFF?text=Computer+Design" alt="Computer Design">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-content">
+                        <h3>Najla binti Mohd Najib</h3>
+                        <p>I am a passionate web developer with a strong foundation in front-end technologies. My journey in web development started during my studies, and I've been continuously learning and improving my skills ever since.</p>
+                        <p>I enjoy creating responsive, user-friendly websites that provide excellent user experiences. My goal is to combine technical expertise with creative design to build digital solutions that make a difference.</p>
+                        <p>When I'm not coding, you can find me exploring new technologies, reading about UI/UX design, or working on personal projects to expand my skill set.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card portfolio-card">
+                        <img src="https://placehold.co/300x200/4e54c8/FFFFFF?text=Project+1" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">E-Commerce Website</h5>
+                            <p class="card-text">A fully responsive e-commerce platform with product catalog, shopping cart, and secure checkout functionality. Built with HTML, CSS, JavaScript, and integrated with a payment gateway.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card portfolio-card">
+                        <img src="https://placehold.co/300x200/4e54c8/FFFFFF?text=Project+2" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Task Management App</h5>
+                            <p class="card-text">A productivity application that helps users organize tasks, set priorities, and track progress. Features include drag-and-drop functionality, due date reminders, and progress visualization.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card portfolio-card">
+                        <img src="https://placehold.co/300x200/4e54c8/FFFFFF?text=Project+3" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Weather Dashboard</h5>
+                            <p class="card-text">An interactive weather application that displays current conditions and forecasts. Integrates with a weather API to provide location-based data with intuitive visual representations.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container">
+                        <h3 class="text-center mb-4">Register for Updates</h3>
+                        
+                        <!-- Form with novalidate attribute -->
+                        <form class="needs-validation" novalidate id="registrationForm">
+                            <!-- Email field with custom tooltip -->
+                            <div class="mb-3 has-validation position-relative">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="invalid-tooltip" id="email-tooltip">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+
+                            <!-- Password field with custom tooltip -->
+                            <div class="mb-3 has-validation position-relative">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                                <div class="invalid-tooltip" id="password-tooltip">
+                                    Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, and a number.
+                                </div>
+                            </div>
+                            
+                            <!-- Confirm Password field with custom tooltip -->
+                            <div class="mb-3 has-validation position-relative">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                                <div class="invalid-tooltip" id="confirm-password-tooltip">
+                                    Passwords do not match.
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                        
+                        <div class="contact-info">
+                            <div class="d-grid mb-3">
+                                <a href="tel:+1234567890" class="btn btn-info">
+                                    <i class="fas fa-phone me-2"></i>Call us now
+                                </a>
+                            </div>
+
+                            <div class="d-grid mb-3">
+                                <a href="mailto:support@example.com?subject=Portfolio Inquiry" class="btn btn-info">
+                                    <i class="fas fa-envelope me-2"></i>Send us an email
+                                </a>
+                            </div>
+
+                            <div class="d-grid mb-3">
+                                <a href="sms:+1234567890?body=Hello, I would like to know more about your work." class="btn btn-info">
+                                    <i class="fas fa-comment me-2"></i>Send us a text
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="video-container">
+                            <video controls poster="https://placehold.co/800x450/4e54c8/FFFFFF?text=Video+Introduction">
+                                <source src="your-video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 Najla's Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Contact Me</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="modalName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="modalName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="modalEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="modalMessage" rows="4" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        (function () {
+            'use strict';
+            
+            // Get the form and add a submit listener
+            const form = document.getElementById('registrationForm');
+            
+            form.addEventListener('submit', function (event) {
+                // Perform custom validation checks first
+                const isPasswordValid = validatePassword();
+                const doPasswordsMatch = confirmPasswordMatch();
+
+                // Check standard form validity and custom checks
+                if (!form.checkValidity() || !isPasswordValid || !doPasswordsMatch) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                // Add the .was-validated class to trigger tooltip display
+                form.classList.add('was-validated');
+            }, false);
+
+            // Function to validate password strength
+            const passwordInput = document.getElementById('password');
+            passwordInput.addEventListener('input', validatePassword);
+
+            function validatePassword() {
+                const password = passwordInput.value;
+                // Regex for password strength (8+ chars, uppercase, lowercase, number)
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+                
+                if (passwordRegex.test(password)) {
+                    passwordInput.classList.remove('is-invalid');
+                    passwordInput.classList.add('is-valid');
+                    return true;
+                } else {
+                    passwordInput.classList.remove('is-valid');
+                    passwordInput.classList.add('is-invalid');
+                    return false;
+                }
+            }
+
+            // Function to confirm passwords match
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            confirmPasswordInput.addEventListener('input', confirmPasswordMatch);
+
+            function confirmPasswordMatch() {
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                
+                if (password === confirmPassword && confirmPassword !== '') {
+                    confirmPasswordInput.classList.remove('is-invalid');
+                    confirmPasswordInput.classList.add('is-valid');
+                    return true;
+                } else {
+                    confirmPasswordInput.classList.remove('is-valid');
+                    confirmPasswordInput.classList.add('is-invalid');
+                    return false;
+                }
+            }
+
+            // Optional: Email field validation can use native browser checks
+            const emailInput = document.getElementById('email');
+            emailInput.addEventListener('input', function() {
+                if (emailInput.checkValidity()) {
+                    emailInput.classList.remove('is-invalid');
+                    emailInput.classList.add('is-valid');
+                } else {
+                    emailInput.classList.remove('is-valid');
+                    emailInput.classList.add('is-invalid');
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
